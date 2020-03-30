@@ -6,9 +6,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import java.lang.annotation.Annotation;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Target;
+import java.awt.*;
 import java.util.LinkedList;
 
 import javax.swing.JButton;
@@ -17,25 +15,30 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
+
 public class Gui {
 
 	public Gui(String title) {
-
+		
+		//jf1
 		Var.jf1 = new JFrame();
 		Var.jf1.setTitle(title);
 		Var.jf1.setLocationRelativeTo(null);
-		Var.jf1.setMaximumSize(new Dimension (1600, 900));
-		Var.jf1.setBounds(0, 0, 700, 500);
+		Var.jf1.setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+		Var.jf1.setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+		Var.jf1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Var.jf1.setResizable(true);
-		Var.jf1.setPreferredSize(new Dimension(700, 500));
+		
+		//label1
 		Var.l1 = new Label();
-		Var.l1.setVisible(true);
-		Var.jf1.add(Var.l1);
 		Var.l1.setLayout(Var.gbl);
+		Var.jf1.add(Var.l1);
+		Var.jf1.setVisible(true);
+		
+		//GBC
 		Var.gbc.insets = new Insets(5, 5, 5, 5);
 		Var.gbc.fill = GridBagConstraints.HORIZONTAL;
-		Var.jf1.setDefaultCloseOperation(1);
-
+	
 		// init
 		initHeading();
 		initQuestions();
@@ -89,7 +92,6 @@ public class Gui {
 		Var.gbl.setConstraints(element, Var.gbc);
 
 		Var.l1.add(element);
-//		Var.jf1.pack();
 	}
 
 	private void initTags() {
@@ -114,9 +116,11 @@ public class Gui {
 	}
 
 	private void initTextfieldAppereance(JTextField text) {
-		text = new JTextField(1);
-		text.setOpaque(true);
-		text.setBackground(Color.green);
+		Font font = new Font("Papyrus", Font.BOLD, 18);
+		text.setBackground(new Color(55, 55, 190, 130));
+		text.setFont(font);
+		text.setForeground(Color.white);
+		
 		text.setVisible(true);
 
 	}
@@ -135,8 +139,9 @@ public class Gui {
 		Var.heading = new JLabel("Simulation of virus spread");
 		// heading.setPreferredSize(new Dimension(450, 50));
 		Var.heading.setOpaque(true);
-		Var.heading.setBackground(Color.blue);
-		Var.heading.setBorder(new LineBorder(Color.white, 3));
+		Var.heading.setBackground(new Color (20, 20, 200, 130));
+		Var.heading.setBorder(new LineBorder(Color.white, 2, true));
+		//Var.heading.setBorder(new LineBorder(Color.white, 3));
 
 		// font
 		Font font = new Font("Papyrus", Font.BOLD, 30);
@@ -173,8 +178,12 @@ public class Gui {
 	private void initCalculateButton() {
 		// panel
 		Var.calculate.setOpaque(true);
-		Var.calculate.setBackground(Color.GREEN);
+//		Var.calculate.set
+		Var.calculate.setBackground(new Color(213, 134, 145, 123));
+		//Var.calculate.setBackground(Color.GREEN);
 		Var.calculate.setBorder(new LineBorder(Color.white));
+		
+		//Var.calculate.setContentAreaFilled(false);
 
 		// font
 		Font font = new Font("Papyrus", Font.PLAIN, 20);
@@ -197,8 +206,8 @@ public class Gui {
 	private void initButtonAppereance(JButton button) {
 		// panel
 		button.setOpaque(true);
-		button.setBackground(Color.blue);
-		button.setBorder(new LineBorder(Color.white));
+		button.setBackground(new Color(30, 30, 200, 130));
+		button.setBorder(new LineBorder(Color.white, 2, true));
 
 		// font
 		Font font = new Font("Papyrus", Font.PLAIN, 20);

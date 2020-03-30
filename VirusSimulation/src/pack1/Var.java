@@ -1,9 +1,8 @@
 package pack1;
 
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.LayoutManager;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -17,9 +16,17 @@ import javax.swing.JTextField;
 public class Var {
 
 	static JFrame jf1;
-	static int screenwidth = 1000, screenheight = 600, backgroundY1 = 0, backgroundY2 = 0;
 	static Label l1;
+
+	static int screenwidth = Toolkit.getDefaultToolkit().getScreenSize().width;
+	static int screenheight = Toolkit.getDefaultToolkit().getScreenSize().height;
+	
+	static int backgroundX1 = -screenwidth;
+	static int backgroundX2 = 0;
+
 	static BufferedImage background1;
+	static BufferedImage background2;
+
 	static GridBagLayout gbl = new GridBagLayout();
 	static GridBagConstraints gbc = new GridBagConstraints();
 
@@ -47,12 +54,21 @@ public class Var {
 	static JTextField cityInput = new JTextField(0);
 	static JTextField mortalityInput = new JTextField(0);
 	static JTextField incubationInput = new JTextField(0);
-	
+
+	static int backgroundspeed = 60;
 
 	public Var() {
 		try {
-			background1 = ImageIO.read(new File("VirusMainPicture.jpg"));
-			System.out.println("gef");
+			background1 = ImageIO.read(new File("Corona1.jpg"));
+			System.out.println("found1");
+		} catch (IOException exc) {
+			exc.printStackTrace();
+			System.out.println("error!");
+		}
+
+		try {
+			background2 = ImageIO.read(new File("Corona2.jpg"));
+			System.out.println("found2");
 		} catch (IOException exc) {
 			exc.printStackTrace();
 			System.out.println("error!");
